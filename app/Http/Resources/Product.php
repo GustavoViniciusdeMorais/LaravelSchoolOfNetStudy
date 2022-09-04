@@ -17,7 +17,11 @@ class Product extends JsonResource
         return [
             'idenfity' => $this->id,
             'title' => $this->title,
-            'short_description' => $this->short_description
+            'short_description' => $this->short_description,
+            'links' => [
+                'remove' => '...',
+                'update' => '...'
+            ]
         ];
     }
 }
