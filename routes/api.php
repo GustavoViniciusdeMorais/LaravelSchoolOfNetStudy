@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/products', 'ProductController');
+Route::delete('/products/{id}', [ProductController::class, 'destroy']);
