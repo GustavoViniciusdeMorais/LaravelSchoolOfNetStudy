@@ -10,6 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'description'];
+    protected $appends = ['short_description'];
 
     public function getTitleAttribute($value)
     {
@@ -27,9 +28,11 @@ class Product extends Model
      */
     public function getShortDescriptionAttribute()
     {
-        if(strlen($this->attributes['description']) > 10) {
-            return mb_substr($this->attributes['description'], 0, 10) . '...';
+        if (isset($this->attributes['description'])) {
+            if (strlen($this->attributes['description']) > 10) {
+                return mb_substr($this->attributes['description'], 0, 10) . '...';
+            }
+            return $this->attributes['description'];
         }
-        return $this->attributes['description'];
     }
 }
