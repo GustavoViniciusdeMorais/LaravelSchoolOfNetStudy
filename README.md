@@ -39,6 +39,12 @@ php artisan db:seed --class=ProductSeeder
 php artisan tinker
 
 \App\Models\Product::find(1)->short_title
+
+# Sqlite
+apk add sqlite
+sqlite3 database/database.sqlite
+.tables
+select * from products
 ```
 
 ### Laravel 8

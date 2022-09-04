@@ -20,9 +20,9 @@ class Product extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('isDeleted', function(Builder $builder){
-            $builder->where('deleted_at', '<>', null);
-        });
+        // static::addGlobalScope('isDeleted', function(Builder $builder){
+        //     $builder->where('deleted_at', '<>', null);
+        // });
     }
 
     public function getTitleAttribute($value)
