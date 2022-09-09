@@ -4,6 +4,15 @@ I build this repository to save the setup for Laravel projects with my docker fi
 
 Created by: Gustavo Vinicius
 
+Composer requirements:
+
+```
+
+composer require laravel/sanctum:^2
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+
+```
+
 ```
 /etc/init.d/mysql stop
 
@@ -20,6 +29,8 @@ composer create-project laravel/laravel:^8.0 appname
 
 cp -R appname/* .
 rm -rf appname/
+
+touch database/database.sqlite
 
 php artisan key:generate
 
