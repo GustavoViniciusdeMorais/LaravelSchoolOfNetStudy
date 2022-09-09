@@ -11,6 +11,8 @@ Composer requirements:
 composer require laravel/sanctum:^2
 php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 
+touch database/database.sqlite
+
 ```
 
 ```
