@@ -58,6 +58,8 @@ apk add sqlite
 sqlite3 database/database.sqlite
 .tables
 select * from products
+.exit
+
 ```
 
 ### Laravel 8
