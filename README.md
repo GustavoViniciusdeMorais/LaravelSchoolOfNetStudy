@@ -32,8 +32,6 @@ composer create-project laravel/laravel:^8.0 appname
 cp -R appname/* .
 rm -rf appname/
 
-touch database/database.sqlite
-
 php artisan key:generate
 
 chmod +x clearcash.sh
@@ -52,6 +50,31 @@ php artisan db:seed --class=ProductSeeder
 php artisan tinker
 
 \App\Models\Product::find(1)->short_title
+
+
+
+```
+
+
+###Database Commands
+
+```
+
+touch database/database.sqlite
+
+php artisan migrate
+
+php artisan make:model Order -m
+php artisan make:model Customer -m
+
+php artisan make:factory CustomerFactory
+php artisan make:seeder CustomerSeeder
+
+php artisan migrate:refresh
+
+php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=ProductSeeder
+php artisan db:seed --class=CustomerSeeder
 
 # Sqlite
 apk add sqlite
