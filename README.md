@@ -56,7 +56,7 @@ php artisan tinker
 ```
 
 
-###Database Commands
+### Database Commands
 
 ```
 
