@@ -18,6 +18,7 @@ class Product extends JsonResource
             'idenfity' => $this->id,
             'title' => $this->title,
             'short_description' => $this->short_description,
+            'stock' => $this->stock,
             'links' => [
                 'remove' => '...',
                 'update' => '...'

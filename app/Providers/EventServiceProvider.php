@@ -8,6 +8,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Observers\ProductObserver;
 use App\Models\Product;
+use App\Events\OrderCreated;
+use App\Listeners\OrderCreatedListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -17,8 +19,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array<class-string, array<int, class-string>>
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
+        OrderCreated::class => [
+            OrderCreatedListener::class,
         ],
     ];
 

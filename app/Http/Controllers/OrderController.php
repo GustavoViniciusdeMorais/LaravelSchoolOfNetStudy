@@ -7,6 +7,7 @@ use App\Http\Controllers\API\BaseController;
 use App\Models\Product;
 use App\Models\Order;
 use Exception;
+use App\Events\OrderCreated;
 
 class OrderController extends BaseController
 {
@@ -49,6 +50,8 @@ class OrderController extends BaseController
             ];
 
             $order = Order::create($orderData);
+
+            OrderCreated::dispatch($order);
 
             return $this->sendResponse($order, 'success');
         }catch(Exception $e){

@@ -85,6 +85,24 @@ select * from products
 
 ```
 
+### Email
+
+```
+
+php artisan make:mail ProductStock --markdown=emails.products.stock
+
+```
+
+### Event Listener
+
+```
+
+php artisan make:event OrderCreated
+
+php artisan make:listener OrderCreatedListener --event=OrderCreated
+
+```
+
 ### Laravel 8
 
 - Configurations

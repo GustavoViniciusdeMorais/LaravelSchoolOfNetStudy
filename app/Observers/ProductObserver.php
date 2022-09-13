@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ProductStock;
 
 class ProductObserver
 {
@@ -26,7 +28,8 @@ class ProductObserver
      */
     public function updated(Product $product)
     {
-        //
+        $email = env('MAIL_FROM_ADDRESS');
+        Mail::to($email)->send(new ProductStock($product));
     }
 
     /**

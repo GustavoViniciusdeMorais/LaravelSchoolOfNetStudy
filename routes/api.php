@@ -27,6 +27,7 @@ Route::get('/orders', [OrderController::class, 'index']);
 Route::post('/orders', [OrderController::class, 'store']);
 
 Route::delete('/products/{id}', [ProductController::class, 'destroy']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
