@@ -29,7 +29,7 @@ class ProductObserver
     public function updated(Product $product)
     {
         $email = env('MAIL_FROM_ADDRESS');
-        Mail::to($email)->send(new ProductStock($product));
+        Mail::to($email)->queue(new ProductStock($product));
     }
 
     /**
