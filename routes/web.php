@@ -27,6 +27,21 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
+        // $user = auth()->user();
+        // $userPermissions = $user->load('roles.permissions')->roles->transform(function($role){
+        //     return $role->permissions->transform(function($permission){
+        //         return $permission->name;
+        //     });
+        // });
+        // dd($userPermissions->first()->toArray());
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/test-permission', function(){
+        if (Gate::allows('user-permission')) {
+            return "Possui permissão";
+        } else {
+            return "Não possui permissão";
+        }
+    });
 });
