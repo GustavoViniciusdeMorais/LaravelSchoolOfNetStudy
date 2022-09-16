@@ -51,3 +51,41 @@ use App\Models\UserRole;
 UserRole::where('id',5)->update(['user_id'=>2]);
 
 ```
+
+### app/Providers/AuthServiceProvider.php
+
+```php
+
+use Illuminate\Support\Facades\Gate;
+
+public function boot()
+{
+    $this->registerPolicies();
+
+    Gate::define('user-permission', function (User $user) {
+        $userPermissions = $user->load('roles.permissions')->roles->transform(function($role){
+            return $role->permissions->transform(function($permission){
+                return $permission->name;
+            });
+        });
+        $userPermissions = $userPermissions->first();
+        $permissions = isset($userPermissions) ? $userPermissions->toArray() : [];
+        return in_array('add_product', $permissions);
+    });
+}
+```
+
+### ./routes/web.php
+
+```php
+
+use Illuminate\Support\Facades\Gate;
+
+Route::get('/test-permission', function(){
+    if (Gate::allows('user-permission')) {
+        return "Possui permissão";
+    } else {
+        return "Não possui permissão";
+    }
+});
+```
