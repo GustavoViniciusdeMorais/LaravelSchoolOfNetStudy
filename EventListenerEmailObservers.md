@@ -18,6 +18,19 @@ php artisan make:listener OrderCreatedListener --event=OrderCreated
 
 ```
 
+### Config MailTrap at .env file
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=b551a1ec05a444
+MAIL_PASSWORD=d4dec829f5966a
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=gustavosystems@email.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
 #### app/Http/Controllers/OrderController.php
 ```php
 public function store(Request $request)
