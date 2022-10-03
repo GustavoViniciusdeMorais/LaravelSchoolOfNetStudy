@@ -1,4 +1,4 @@
-# Laravel ORM
+# Laravel Chat Socket IO
 
 I build this repository to save the setup for Laravel projects with my docker files.
 
@@ -15,6 +15,20 @@ touch database/database.sqlite
 
 ```
 
+### Chat Commands
+```
+
+composer require laravel/ui:^3.2
+
+php artisan ui vue --auth
+
+apk add --update nodejs npm
+
+npm install && npm run dev
+
+```
+
+### Basic Commands
 ```
 /etc/init.d/mysql stop
 
