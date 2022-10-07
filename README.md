@@ -28,6 +28,24 @@ npm install && npm run dev
 
 ```
 
+
+### PGSQL
+```
+
+psql -d postgres -U postgres
+
+\l # list databases
+
+\c # connect to database
+
+\dt # show tables
+
+\d table # describe table
+
+select * from customers;
+
+```
+
 ### Basic Commands
 ```
 /etc/init.d/mysql stop

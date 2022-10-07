@@ -12,7 +12,7 @@ services:
             - ./:/var/www/html
         depends_on:
             - php
-            - mysql
+            - postgres
         networks:
             - app-network
 
@@ -26,17 +26,18 @@ services:
         networks:
             - app-network
 
-    mysql:
-        image: mysql:5.7
+    postgres:
+        image: postgres
         restart: always
-        container_name: mysql
+        container_name: postgres
         ports:
-            - 3306:3306
+            - 5432:5432
         environment:
-            MYSQL_DATABASE: laravel
-            MYSQL_ROOT_PASSWORD: laravel
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
         volumes:
-            - ./dockerDBData:/var/lib/mysql
+            - ./data/db:/var/lib/postgresql/data
         networks:
             app-network:
                 ipv4_address: 10.0.0.8

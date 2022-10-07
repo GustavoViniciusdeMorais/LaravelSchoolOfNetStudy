@@ -24,14 +24,18 @@ RUN apk add php8-common \
     php8-pecl-redis \
     php8-dev
 
-RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+RUN apk --update add gcc make g++ zlib-dev
+
+RUN set -ex \
+  && apk --no-cache add \
+    postgresql-dev
+
+RUN docker-php-ext-install pdo pdo_pgsql
 
 RUN apk update && apk add bash
 
 RUN docker-php-ext-install pcntl
-RUN docker-php-ext-install pdo_mysql
-
-RUN apk --update add gcc make g++ zlib-dev
+# RUN docker-php-ext-install pdo_mysql
 
 RUN apk --no-cache add pcre-dev ${PHPIZE_DEPS} \
   && pecl install redis \
