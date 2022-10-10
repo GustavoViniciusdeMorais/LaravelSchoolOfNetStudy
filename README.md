@@ -46,6 +46,16 @@ select * from customers;
 
 ```
 
+### VueJs Path
+```
+./resources/js/components/ExampleComponent.vue
+
+At the template blade put a div with id="app"
+
+npm run dev
+
+```
+
 ### Basic Commands
 ```
 /etc/init.d/mysql stop
