@@ -13,6 +13,9 @@ php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 
 touch database/database.sqlite
 
+https://github.com/especializati/larachat
+https://github.com/especializati/larachat.git
+
 ```
 
 ### Chat Commands

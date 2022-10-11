@@ -21,11 +21,13 @@ use App\Http\Controllers\ProductController;
 
 Route::redirect('/', '/chat')->name('home');
 
+Route::get('/chat', [ChatController::class, 'index'])
+    ->name('get.chat')
+    ->middleware('auth');
+
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/chat', [ChatController::class, 'index'])->name('get.chat');

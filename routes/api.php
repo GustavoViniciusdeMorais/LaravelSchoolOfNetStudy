@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
@@ -19,6 +20,16 @@ use App\Http\Controllers\ProductController;
 
 // Route::middleware('auth:sanctum')->group( function () {
 // });
+
+Route::get('/test', function(){
+    return ['ok'];
+});
+
+Route::prefix('v1')
+    ->middleware('auth:web')
+    ->group(function() {
+        Route::get('/users', [UserApiController::class, 'index']);
+    });
 
 Route::get('/customers', [CustomerController::class, 'index']);
 Route::post('/customers', [CustomerController::class, 'store']);
