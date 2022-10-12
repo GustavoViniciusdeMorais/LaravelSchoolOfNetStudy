@@ -29,6 +29,10 @@ apk add --update nodejs npm
 
 npm install && npm run dev
 
+php artisan make:controller Api\\ChatApiController
+php artisan make:resource MessageResource
+php artisan make:request StoreMessage
+
 ```
 
 

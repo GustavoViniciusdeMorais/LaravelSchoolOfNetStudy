@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\ChatApiController;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
@@ -25,10 +26,16 @@ Route::get('/test', function(){
     return ['ok'];
 });
 
+// Route::get('/messages/create', [ChatApiController::class, 'store']);
+
 Route::prefix('v1')
     ->middleware('auth:web')
     ->group(function() {
+
         Route::get('/users', [UserApiController::class, 'index']);
+
+        Route::get('/messages/create', [ChatApiController::class, 'store']);
+
     });
 
 Route::get('/customers', [CustomerController::class, 'index']);
