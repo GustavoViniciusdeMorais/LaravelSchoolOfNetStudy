@@ -17,6 +17,11 @@ php artisan make:request StoreMessage
 
 php artisan make:event NewMessageCreated
 
+npm install -g laravel-echo-server
+
+laravel-echo-server init
+laravel-echo-server start
+
 ```
 
 ### PGSQL
