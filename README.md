@@ -142,6 +142,14 @@ php artisan make:mail ProductStock --markdown=emails.products.stock
 
 ```
 
+### Broadcast ServiceProvider
+```
+
+./config/app.php
+App\Providers\BroadcastServiceProvider::class,
+
+```
+
 ### Event Listener
 
 ```

@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware(['web', 'api'])
+                // ->middleware(['api']) // use this to test Redis routes
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 

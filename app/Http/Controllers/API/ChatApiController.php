@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\NewMessageCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMessage;
 use App\Http\Resources\MessageResource;
@@ -20,6 +21,8 @@ class ChatApiController extends Controller
     public function store(StoreMessage $request)
     {
         $reslutMessage = $request->user()->messages()->create($request->all());
+
+        event(new NewMessageCreated($reslutMessage));
 
         return new MessageResource($reslutMessage);
     }

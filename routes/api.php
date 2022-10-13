@@ -8,6 +8,8 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RedisTest;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +30,9 @@ Route::get('/test', function(){
 
 // Route::get('/messages/create', [ChatApiController::class, 'store']);
 
+Route::get('/redis', [RedisTest::class, 'index']);
+Route::post('/redis', [RedisTest::class, 'store']);
+
 Route::prefix('v1')
     ->middleware('auth:web')
     ->group(function() {
@@ -35,6 +40,9 @@ Route::prefix('v1')
         Route::get('/users', [UserApiController::class, 'index']);
 
         Route::get('/messages/create', [ChatApiController::class, 'store']);
+        // Route::get('/messages/create', function(){
+        //     return 'asfasdfasdf';
+        // });
 
     });
 
