@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+import store from './vuex/store'
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,6 +30,7 @@ Vue.component('chat-component', require('./Chat/ChatComponent.vue').default);
 
 const app = new Vue({
     el: '#app',
+    store: store
 });
 
 import Echo from 'laravel-echo';

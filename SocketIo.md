@@ -21,6 +21,7 @@ npm install -g laravel-echo-server
 
 laravel-echo-server init
 laravel-echo-server start
+//laravel-echo-server start --dir=/var/www/html/
 
 ```
 
@@ -97,3 +98,5 @@ class ChatApiController extends Controller
 http://localhost/api/v1/messages/create?receiver_id=2&message=asdfasdf
 
 ```
+![TDD](./imgs/laravel-echo.png)
+![TDD](./imgs/message.png)
