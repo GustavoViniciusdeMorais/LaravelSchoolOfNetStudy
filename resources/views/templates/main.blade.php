@@ -9,6 +9,7 @@
     <title>@yield('title')</title>
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/chat.css') }}">
 </head>
 <body>
     <div class="container" id="app">
