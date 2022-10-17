@@ -5972,6 +5972,30 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./resources/js/Echo.js":
+/*!******************************!*\
+  !*** ./resources/js/Echo.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vuex_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vuex/store */ "./resources/js/vuex/store.js");
+
+window.Echo.join('vikisystems_database_chatroom').here(function (users) {
+  console.log('usuarios online ');
+  console.log(users);
+  _vuex_store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('ADD_ONLINE_USERS', users);
+}).joining(function (user) {
+  console.log('entrou: ', user);
+  _vuex_store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('ADD_ONLINE_USER', user);
+}).leaving(function (user) {
+  console.log('saiu: ', user);
+  _vuex_store__WEBPACK_IMPORTED_MODULE_0__["default"].commit('REMOVE_ONLINE_USER', user);
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -5981,7 +6005,6 @@ render._withStripped = true;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vuex_store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vuex/store */ "./resources/js/vuex/store.js");
-/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -6016,47 +6039,65 @@ var app = new Vue({
   store: _vuex_store__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
-window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
-window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  broadcaster: 'socket.io',
-  host: window.location.hostname + ':6001'
-});
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-
 try {
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 } catch (e) {}
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
+
 // import Echo from 'laravel-echo';
+
 // window.Pusher = require('pusher-js');
+
 // window.Echo = new Echo({
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+window.io = __webpack_require__(/*! socket.io-client */ "./node_modules/socket.io-client/lib/index.js");
+window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  broadcaster: 'socket.io',
+  host: window.location.hostname + ':6001'
+});
+__webpack_require__(/*! ./Echo */ "./resources/js/Echo.js");
+// window.Echo.join('vikisystems_database_chatroom')
+//     .here(users => {
+//         console.log('usuarios online ')
+//         console.log(users)
+//     })
+//     .joining(user => {
+//         console.log('entrou: ', user)
+//     })
+//     .leaving(user => {
+//         console.log('saiu: ', user)
+//     });
 
 /***/ }),
 
@@ -6143,9 +6184,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/js/vuex/modules/users/state.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   ADD_ALL_USERS: function ADD_ALL_USERS(state, users) {
     state.users = users;
+  },
+  ADD_ONLINE_USERS: function ADD_ONLINE_USERS(state, users) {
+    state.onlineUsers = users;
+  },
+  ADD_ONLINE_USER: function ADD_ONLINE_USER(state, user) {
+    state.onlineUsers.unshift(user);
+  },
+  REMOVE_ONLINE_USER: function REMOVE_ONLINE_USER(state, user) {
+    state.onlineUsers = state.onlineUsers.filter(function (person) {
+      return person.email != user.email;
+    });
   }
 });
 
@@ -6165,7 +6219,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   users: {
     data: []
-  }
+  },
+  onlineUsers: []
 });
 
 /***/ }),
