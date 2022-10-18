@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Events\GetUsers;
 
 class UserApiController extends Controller
 {
@@ -21,6 +22,8 @@ class UserApiController extends Controller
     {
         $loggedUserId = auth()->user()->id;
         $users = $this->user->where('id', '<>', $loggedUserId)->get();
+
+        GetUsers::dispatch($users);
 
         return UserResource::collection($users);
     }

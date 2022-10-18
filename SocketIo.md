@@ -1,5 +1,18 @@
 # Socket Io
 
+### Git
+```
+
+composer require laravel/sanctum:^2
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+
+touch database/database.sqlite
+
+https://github.com/especializati/larachat
+https://github.com/especializati/larachat.git
+
+```
+
 ### Commands
 ```
 
@@ -10,6 +23,8 @@ php artisan ui vue --auth
 apk add --update nodejs npm
 
 npm install && npm run dev
+
+npm install --save laravel-echo socket.io-client
 
 php artisan make:controller Api\\ChatApiController
 php artisan make:resource MessageResource

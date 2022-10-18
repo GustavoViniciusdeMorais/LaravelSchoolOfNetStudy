@@ -32,14 +32,22 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // });
 import Echo from 'laravel-echo';
 
-window.io = require('socket.io-client')
+window.io = require('socket.io-client');
 
 window.Echo = new Echo({
     broadcaster: 'socket.io',
     host: window.location.hostname + ':6001'
 });
 
-require('./Echo');
+window.Echo.channel('vikisystems_database_listUsers')
+    .listen('getUsers', (users) => {
+        this.users.push(users);
+        console.log('test');
+    });
+
+console.log('bootstrap', window.Echo)
+
+// require('./Echo');
 // window.Echo.join('vikisystems_database_chatroom')
 //     .here(users => {
 //         console.log('usuarios online ')

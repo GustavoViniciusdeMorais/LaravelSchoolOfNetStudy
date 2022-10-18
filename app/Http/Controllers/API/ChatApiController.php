@@ -22,7 +22,7 @@ class ChatApiController extends Controller
     {
         $reslutMessage = $request->user()->messages()->create($request->all());
 
-        event(new NewMessageCreated($reslutMessage));
+        NewMessageCreated::dispatch($reslutMessage);
 
         return new MessageResource($reslutMessage);
     }

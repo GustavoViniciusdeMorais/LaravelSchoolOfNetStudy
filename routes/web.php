@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ Route::redirect('/', '/chat')->name('home');
 Route::get('/chat', [ChatController::class, 'index'])
     ->name('get.chat')
     ->middleware('auth');
+
+Route::get('/tests', [TestController::class, 'index']);
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');

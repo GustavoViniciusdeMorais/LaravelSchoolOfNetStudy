@@ -17,6 +17,10 @@ Broadcast::channel('chatroom', function ($user) {
     return $user;
 });
 
+Broadcast::channel('listUsers', function ($data) {
+    return $data;
+});
+
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
