@@ -1,11 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,18 +13,10 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-// Route::middleware('auth:sanctum')->group( function () {
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-Route::get('/customers', [CustomerController::class, 'index']);
-Route::post('/customers', [CustomerController::class, 'store']);
-
-Route::get('/orders', [OrderController::class, 'index']);
-Route::post('/orders', [OrderController::class, 'store']);
-
-Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-Route::get('/products/{id}', [ProductController::class, 'show']);
-
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
-Route::post('/register', [AuthController::class, 'register']);
+Route::get('/test', function () {
+    return 'Test';
+});
