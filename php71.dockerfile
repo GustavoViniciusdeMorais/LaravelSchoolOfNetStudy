@@ -24,7 +24,7 @@ RUN apk add php7-common \
     php7-pecl-redis \
     php7-dev
 
-# RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
 WORKDIR /var/www/html/
 
@@ -48,9 +48,5 @@ RUN apk --no-cache add pcre-dev ${PHPIZE_DEPS} \
   && rm -rf /tmp/pear
 
 RUN apk add nano
-
-RUN apk add openrc
-
-EXPOSE 9000
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]

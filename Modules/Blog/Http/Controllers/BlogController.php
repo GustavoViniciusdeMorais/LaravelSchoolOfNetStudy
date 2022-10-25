@@ -17,6 +17,11 @@ class BlogController extends Controller
         return view('blog::index');
     }
 
+    public function test()
+    {
+        return response()->json('Test');
+    }
+
     /**
      * Show the form for creating a new resource.
      * @return Response

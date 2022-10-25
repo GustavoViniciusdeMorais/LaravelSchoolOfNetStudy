@@ -13,4 +13,5 @@
 
 Route::prefix('blog')->group(function() {
     Route::get('/', 'BlogController@index');
+    Route::get('/test', 'BlogController@test');
 });
