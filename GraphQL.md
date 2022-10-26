@@ -9,6 +9,8 @@ php artisan make:graphql:query UserQuery
 
 php artisan make:graphql:type UserType
 
+php artisan db:seed
+
 ```
 
 ### Chrome Extension
@@ -52,6 +54,20 @@ class UserQuery extends Query
         'name' => 'user',
         'description' => 'A query'
     ];
+
+    public function args(): array
+    {
+        return [
+            'id' => [
+                'type' => Type::int(),
+                'description' => 'User ID'
+            ],
+            'paginate' => [
+                'type' => Type::int(),
+                'description' => 'Paginate results'
+            ]
+        ];
+    }
 
     public function type(): Type
     {
@@ -100,3 +116,5 @@ class UserType extends GraphQLType
 ```
 
 ![graphQL](/imgs/graphQL.png)
+![graphQL](/imgs/paginate.png)
+![graphQL](/imgs/page.png)

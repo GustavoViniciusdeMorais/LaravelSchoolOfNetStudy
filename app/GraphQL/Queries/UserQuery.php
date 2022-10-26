@@ -27,7 +27,18 @@ class UserQuery extends Query
     public function args(): array
     {
         return [
-
+            'id' => [
+                'type' => Type::int(),
+                'description' => 'User ID'
+            ],
+            'paginate' => [
+                'type' => Type::int(),
+                'description' => 'Paginate results'
+            ],
+            'page' => [
+                'type' => Type::int(),
+                'description' => 'Page number'
+            ]
         ];
     }
 
@@ -37,7 +48,21 @@ class UserQuery extends Query
         // $fields = $getSelectFields();
         // $select = $fields->getSelect();
         // $with = $fields->getRelations();
+        $result = null;
 
-        return User::all();
+        if (isset($args['id'])) {
+            $result = User::where('id', $args['id'])->get();
+        } elseif (isset($args['paginate'])) {
+
+            $page = 1;
+
+            if (isset($args['page'])) {
+                $page = $args['page'];
+            }
+
+            $result = User::paginate($args['paginate'], ['*'], 'page', $page);
+        }
+
+        return $result;
     }
 }
