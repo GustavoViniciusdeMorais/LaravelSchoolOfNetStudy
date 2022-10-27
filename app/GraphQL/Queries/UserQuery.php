@@ -45,13 +45,13 @@ class UserQuery extends Query
     public function resolve($root, array $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
         /** @var SelectFields $fields */
-        // $fields = $getSelectFields();
-        // $select = $fields->getSelect();
-        // $with = $fields->getRelations();
+        $fields = $getSelectFields();
+        $select = $fields->getSelect();
+        $with = $fields->getRelations();
         $result = null;
 
         if (isset($args['id'])) {
-            $result = User::where('id', $args['id'])->get();
+            $result = User::with($with)->where('id', $args['id'])->get();
         } elseif (isset($args['paginate'])) {
 
             $page = 1;
@@ -60,7 +60,7 @@ class UserQuery extends Query
                 $page = $args['page'];
             }
 
-            $result = User::paginate($args['paginate'], ['*'], 'page', $page);
+            $result = User::with($with)->paginate($args['paginate'], ['*'], 'page', $page);
         }
 
         return $result;

@@ -135,3 +135,4 @@ class UserType extends GraphQLType
 ![graphQL](/imgs/paginate.png)
 ![graphQL](/imgs/page.png)
 ![graphQL](/imgs/paginatedUsers.png)
+![graphQL](/imgs/userPosts.png)
