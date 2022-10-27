@@ -12,25 +12,21 @@ use Rebing\GraphQL\Support\SelectFields;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use App\Models\User;
 
-class UserQuery extends Query
+class UserPaginateQuery extends Query
 {
     protected $attributes = [
-        'name' => 'user',
-        'description' => 'List of users'
+        'name' => 'userPaginate',
+        'description' => 'Paginated list of users'
     ];
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('user'));
+        return GraphQL::paginate('user');
     }
 
     public function args(): array
     {
         return [
-            'id' => [
-                'type' => Type::int(),
-                'description' => 'User ID'
-            ],
             'paginate' => [
                 'type' => Type::int(),
                 'description' => 'Paginate results'
@@ -50,10 +46,7 @@ class UserQuery extends Query
         // $with = $fields->getRelations();
         $result = null;
 
-        if (isset($args['id'])) {
-            $result = User::where('id', $args['id'])->get();
-        } elseif (isset($args['paginate'])) {
-
+        if (isset($args['paginate'])) {
             $page = 1;
 
             if (isset($args['page'])) {
@@ -61,6 +54,8 @@ class UserQuery extends Query
             }
 
             $result = User::paginate($args['paginate'], ['*'], 'page', $page);
+        } else {
+            $result = User::paginate();
         }
 
         return $result;

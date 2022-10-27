@@ -9,7 +9,23 @@ php artisan make:graphql:query UserQuery
 
 php artisan make:graphql:type UserType
 
+php artisan make:graphql:query UserPaginateQuery
+
+php artisan make:model Post -m
+
+php artisan make:factory PostFactory
+
+php artisan make:seed PostSeeder
+
 php artisan db:seed
+
+php artisan tinker
+
+App\Models\Post::factory()->times(5)->create();
+
+php artisan make:graphql:query PostQuery
+
+php artisan make:graphql:type PostType
 
 ```
 
@@ -118,3 +134,4 @@ class UserType extends GraphQLType
 ![graphQL](/imgs/graphQL.png)
 ![graphQL](/imgs/paginate.png)
 ![graphQL](/imgs/page.png)
+![graphQL](/imgs/paginatedUsers.png)

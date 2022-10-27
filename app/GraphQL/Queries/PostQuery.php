@@ -10,27 +10,23 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Query;
 use Rebing\GraphQL\Support\SelectFields;
 use Rebing\GraphQL\Support\Facades\GraphQL;
-use App\Models\User;
+use App\Models\Post;
 
-class UserQuery extends Query
+class PostQuery extends Query
 {
     protected $attributes = [
-        'name' => 'user',
-        'description' => 'List of users'
+        'name' => 'post',
+        'description' => 'A query'
     ];
 
     public function type(): Type
     {
-        return Type::listOf(GraphQL::type('user'));
+        return GraphQL::paginate('post');
     }
 
     public function args(): array
     {
         return [
-            'id' => [
-                'type' => Type::int(),
-                'description' => 'User ID'
-            ],
             'paginate' => [
                 'type' => Type::int(),
                 'description' => 'Paginate results'
@@ -44,25 +40,20 @@ class UserQuery extends Query
 
     public function resolve($root, array $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
-        /** @var SelectFields $fields */
-        // $fields = $getSelectFields();
-        // $select = $fields->getSelect();
-        // $with = $fields->getRelations();
         $result = null;
 
-        if (isset($args['id'])) {
-            $result = User::where('id', $args['id'])->get();
-        } elseif (isset($args['paginate'])) {
-
+        if (isset($args['paginate'])) {
             $page = 1;
 
             if (isset($args['page'])) {
                 $page = $args['page'];
             }
 
-            $result = User::paginate($args['paginate'], ['*'], 'page', $page);
+            $result = Post::paginate($args['paginate'], ['*'], 'page', $page);
+        } else {
+            $result = Post::paginate();
         }
-
+        
         return $result;
     }
 }

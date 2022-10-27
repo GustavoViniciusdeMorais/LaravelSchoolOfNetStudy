@@ -2,8 +2,11 @@
 
 declare(strict_types = 1);
 
+use App\GraphQL\Queries\PostQuery;
 use App\GraphQL\Queries\UserQuery;
 use App\GraphQL\Types\UserType;
+use App\GraphQL\Queries\UserPaginateQuery;
+use App\GraphQL\Types\PostType;
 
 return [
     'route' => [
@@ -41,6 +44,8 @@ return [
         'default' => [
             'query' => [
                 'user' => UserQuery::class,
+                'users_paginated' => UserPaginateQuery::class,
+                'post' => PostQuery::class
             ],
             'mutation' => [
                 // ExampleMutation::class,
@@ -72,6 +77,7 @@ return [
     //
     'types' => [
         'user' => UserType::class,
+        'post' => PostType::class
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request
