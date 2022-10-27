@@ -27,6 +27,8 @@ php artisan make:graphql:query PostQuery
 
 php artisan make:graphql:type PostType
 
+php artisan make:graphql:mutation CreatePostMutation
+
 ```
 
 ### Chrome Extension
@@ -136,3 +138,4 @@ class UserType extends GraphQLType
 ![graphQL](/imgs/page.png)
 ![graphQL](/imgs/paginatedUsers.png)
 ![graphQL](/imgs/userPosts.png)
+![graphQL](/imgs/createPost.png)

@@ -7,6 +7,7 @@ use App\GraphQL\Queries\UserQuery;
 use App\GraphQL\Types\UserType;
 use App\GraphQL\Queries\UserPaginateQuery;
 use App\GraphQL\Types\PostType;
+use App\GraphQL\Mutations\CreatePostMutation;
 
 return [
     'route' => [
@@ -48,7 +49,7 @@ return [
                 'post' => PostQuery::class
             ],
             'mutation' => [
-                // ExampleMutation::class,
+                'createPost' => CreatePostMutation::class
             ],
             // The types only available in this schema
             'types' => [
