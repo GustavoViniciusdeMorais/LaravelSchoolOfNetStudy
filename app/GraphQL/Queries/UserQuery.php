@@ -61,6 +61,8 @@ class UserQuery extends Query
             }
 
             $result = User::with($with)->paginate($args['paginate'], ['*'], 'page', $page);
+        } else {
+            $result = User::with($with)->get();
         }
 
         return $result;
