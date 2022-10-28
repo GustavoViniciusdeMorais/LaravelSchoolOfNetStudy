@@ -13,6 +13,8 @@ $page = new \Modules\Pages\Models\Page();
 
 $page->create(['title'=>'test','body'=>'test']);
 
+php artisan vendor:publish --provider="Modules\Location\Providers\LocationServiceProvider" --tag=config-locations
+
 ```
 
 ### ./config/app.php
