@@ -20,3 +20,8 @@ Route::get('/', function () {
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
+Route::get('/locale/{local}', function ($locale) {
+    request()->session()->put('locale', $locale);
+    return redirect('/pages');
+});

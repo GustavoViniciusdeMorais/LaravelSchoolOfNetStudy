@@ -4,7 +4,7 @@
 
     <div class="card">
         <div class="card-header">
-            <strong>Pages</strong>
+            <strong>{{ trans('Page::pages.title') . ' test' }}</strong>
         </div>
 
         <div class="card-body">
