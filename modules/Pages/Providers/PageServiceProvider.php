@@ -17,8 +17,6 @@ class PageServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../Views', 'Page');
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'Page');
     }
 
     public function register()

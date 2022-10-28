@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Modules\Pages\Providers\PageServiceProvider::class,
+        Modules\Location\Providers\LocationServiceProvider::class,
 
         /*
          * Application Service Providers...
