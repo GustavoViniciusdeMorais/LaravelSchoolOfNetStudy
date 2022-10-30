@@ -4,6 +4,7 @@ namespace Modules\Location\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Modules\Location\Location;
 
 class LocationServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,10 @@ class LocationServiceProvider extends ServiceProvider
             __DIR__ . '/../config/locations.php',
             'config-locations'
         );
+
+        $this->app->singleton('location', function($app){
+            return new Location('pt-br');
+        });
     }
 }
 

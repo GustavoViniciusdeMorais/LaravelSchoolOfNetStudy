@@ -45,3 +45,86 @@ protected $middlewareGroups = [
 ```
 
 ![TDD](/imgs/locationPack.png)
+
+## Facade
+
+### 
+```
+```
+
+### ./modules/Location/Location.php
+```
+
+namespace Modules\Location;
+
+class Location
+{
+
+    private $locale = 'en';
+
+    public function __construct($locale = 'en')
+    {
+        $this->locale = $locale;
+    }
+
+    public function getLocation()
+    {
+        return $this->locale;
+    }
+}
+
+```
+
+### ./modules/Location/Facades/LocationFacade.php
+```
+
+namespace Modules\Location\Facades;
+
+use Illuminate\Support\Facades\Facade;
+
+class LocationFacade extends Facade
+{
+
+    protected static function getFacadeAccessor()
+    {
+        return 'location';
+    }
+}
+
+```
+
+### ./modules/Location/Providers/LocationServiceProvider.php
+```
+
+public function register()
+{
+    $this->app->singleton('location', function($app){
+        return new Location('pt-br');
+    });
+}
+
+```
+
+### ./config/app.php
+```
+
+'aliases' => [
+    'Location' => Modules\Location\Facades\LocationFacade::class,
+],
+
+```
+
+### ./app/Http/Controllers/TestController.php
+```
+use Location;
+
+class TestController extends Controller
+{
+    
+    public function index()
+    {
+        $location = Location::getLocation();
+        return view('tests.index')->with(['location' => $location]);
+    }
+}
+```

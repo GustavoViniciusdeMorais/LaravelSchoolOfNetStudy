@@ -232,6 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Location' => Modules\Location\Facades\LocationFacade::class,
+
     ],
 
 ];
