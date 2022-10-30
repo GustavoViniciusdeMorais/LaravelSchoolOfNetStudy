@@ -1,6 +1,6 @@
 <?php
 
-use Modules\Location\Http\Controllers\LocationsController;
+use Redninjaturtle\RedLaravelLocation\Http\Controllers\LocationsController;
 
 Route::get('/locale/configs', [LocationsController::class, 'configs']);
 

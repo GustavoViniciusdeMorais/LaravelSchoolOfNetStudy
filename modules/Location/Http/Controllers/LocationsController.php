@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Location\Http\Controllers;
+namespace Redninjaturtle\RedLaravelLocation\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

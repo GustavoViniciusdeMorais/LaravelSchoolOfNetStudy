@@ -166,7 +166,7 @@ return [
          * Package Service Providers...
          */
         Modules\Pages\Providers\PageServiceProvider::class,
-        Modules\Location\Providers\LocationServiceProvider::class,
+        Redninjaturtle\RedLaravelLocation\Providers\LocationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -232,7 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Location' => Modules\Location\Facades\LocationFacade::class,
+        'Location' => Redninjaturtle\RedLaravelLocation\Facades\LocationFacade::class,
 
     ],
 

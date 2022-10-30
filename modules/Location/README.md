@@ -28,7 +28,7 @@ public function boot()
     * Package Service Providers...
     */
     Modules\Pages\Providers\PageServiceProvider::class,
-    Modules\Location\Providers\LocationServiceProvider::class,
+    Redninjaturtle\RedLaravelLocation\Providers\LocationServiceProvider::class,
 ],
 
 ```
@@ -38,7 +38,7 @@ public function boot()
 
 protected $middlewareGroups = [
     'web' => [
-        \Modules\Location\Http\Middleware\Locale::class,
+        \Redninjaturtle\RedLaravelLocation\Http\Middleware\Locale::class,
     ],
 ];
 
@@ -51,7 +51,7 @@ protected $middlewareGroups = [
 ### ./modules/Location/Location.php
 ```
 
-namespace Modules\Location;
+namespace Redninjaturtle\RedLaravelLocation;
 
 class Location
 {
@@ -74,7 +74,7 @@ class Location
 ### ./modules/Location/Facades/LocationFacade.php
 ```
 
-namespace Modules\Location\Facades;
+namespace Redninjaturtle\RedLaravelLocation\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -105,7 +105,7 @@ public function register()
 ```
 
 'aliases' => [
-    'Location' => Modules\Location\Facades\LocationFacade::class,
+    'Location' => Redninjaturtle\RedLaravelLocation\Facades\LocationFacade::class,
 ],
 
 ```

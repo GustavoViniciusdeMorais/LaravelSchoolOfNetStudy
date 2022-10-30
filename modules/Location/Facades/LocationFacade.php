@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Location\Facades;
+namespace Redninjaturtle\RedLaravelLocation\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

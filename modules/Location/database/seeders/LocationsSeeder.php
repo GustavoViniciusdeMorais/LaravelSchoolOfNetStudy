@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Location\Database;
+namespace Redninjaturtle\RedLaravelLocation\Database;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

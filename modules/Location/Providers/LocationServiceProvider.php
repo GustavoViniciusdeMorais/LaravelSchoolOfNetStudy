@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Location\Providers;
+namespace Redninjaturtle\RedLaravelLocation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Modules\Location\Location;
+use Redninjaturtle\RedLaravelLocation\Location;
 
 class LocationServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class LocationServiceProvider extends ServiceProvider
         
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'Location');
 
-        Route::namespace('Modules\Location\Http\Controllers')
+        Route::namespace('Redninjaturtle\RedLaravelLocation\Http\Controllers')
             ->middleware(['web'])
             ->group(__DIR__ . '/../Routes/web.php');
         

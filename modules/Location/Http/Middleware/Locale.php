@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Location\Http\Middleware;
+namespace Redninjaturtle\RedLaravelLocation\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

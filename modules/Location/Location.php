@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Location;
+namespace Redninjaturtle\RedLaravelLocation;
 
 class Location
 {
