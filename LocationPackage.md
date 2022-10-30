@@ -48,10 +48,6 @@ protected $middlewareGroups = [
 
 ## Facade
 
-### 
-```
-```
-
 ### ./modules/Location/Location.php
 ```
 
