@@ -1,5 +1,16 @@
 # Location Package
 
+## Install
+```
+
+https://packagist.org/packages/redninjaturtle/red-laravel-location
+
+composer require redninjaturtle/red-laravel-location
+
+# Remember to add the kernel config explained below.
+
+```
+
 ### ./modules/Location/Providers/LocationServiceProvider.php
 ```
 
