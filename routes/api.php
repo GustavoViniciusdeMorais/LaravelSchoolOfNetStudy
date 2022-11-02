@@ -6,6 +6,8 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Api\CourseController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,6 +21,18 @@ use App\Http\Controllers\ProductController;
 
 // Route::middleware('auth:sanctum')->group( function () {
 // });
+
+Route::get('/check', function () {
+    return response()->json([
+        'data' => [
+            'status' => 'success',
+            'message' => 'ok'
+        ]
+    ]);
+});
+
+Route::get('/courses', [CourseController::class, 'index']);
+Route::post('/courses', [CourseController::class, 'store']);
 
 Route::get('/customers', [CustomerController::class, 'index']);
 Route::post('/customers', [CustomerController::class, 'store']);
