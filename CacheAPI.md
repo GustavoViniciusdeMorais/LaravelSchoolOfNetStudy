@@ -101,3 +101,6 @@ class CourseResource extends JsonResource
 }
 
 ```
+
+![TDD](/imgs/API_Flow.png)
+![TDD](/imgs/postCourse.png)
