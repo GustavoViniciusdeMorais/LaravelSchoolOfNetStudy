@@ -45,12 +45,14 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $identify
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($identify)
     {
-        //
+        $courses = $this->courseService->getCourseByUid($identify);
+
+        return new CourseResource($courses);
     }
 
     /**

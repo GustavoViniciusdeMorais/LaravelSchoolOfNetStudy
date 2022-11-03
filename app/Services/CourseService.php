@@ -23,4 +23,9 @@ class CourseService
     {
         return $this->courseRepository->createCourse($data);
     }
+
+    public function getCourseByUid($identify)
+    {
+        return $this->courseRepository->getCourseByUid($identify);
+    }
 }

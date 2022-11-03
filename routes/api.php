@@ -32,6 +32,7 @@ Route::get('/check', function () {
 });
 
 Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses/{identify}', [CourseController::class, 'show']);
 Route::post('/courses', [CourseController::class, 'store']);
 
 Route::get('/customers', [CustomerController::class, 'index']);

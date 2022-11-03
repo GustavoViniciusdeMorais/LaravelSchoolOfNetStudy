@@ -17,12 +17,17 @@ class CourseRepository
 
     public function getAllCourses()
     {
-        return $this->entity->get();
+        return $this->entity->orderBy('created_at', 'desc')->get();
     }
 
     public function createCourse($data)
     {
         $data['uuid'] = Str::uuid()->toString();
         return $this->entity->create($data);
+    }
+
+    public function getCourseByUid($identify)
+    {
+        return $this->entity->where('uuid', $identify)->firstOrFail();
     }
 }
