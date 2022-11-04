@@ -45,7 +45,7 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $identify
+     * @param  string  $identify
      * @return \Illuminate\Http\Response
      */
     public function show($identify)
@@ -59,22 +59,26 @@ class CourseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $identify
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CoursesRequest $request, $identify)
     {
-        //
+        $courses = $this->courseService->updateCourseByUid($identify, $request->all());
+
+        return new CourseResource($courses);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string  $identify
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($identify)
     {
-        //
+        $courses = $this->courseService->deleteCourseByIdentify($identify);
+
+        return new CourseResource($courses);
     }
 }

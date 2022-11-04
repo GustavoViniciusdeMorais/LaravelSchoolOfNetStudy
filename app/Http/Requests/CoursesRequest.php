@@ -23,8 +23,11 @@ class CoursesRequest extends FormRequest
      */
     public function rules()
     {
+
+        $uuid = $this->course ?? '';
+
         return [
-            'name' => ['required', 'unique:courses,name'],
+            'name' => ['required', "unique:courses,name,{$uuid},uuid"],
             'description' => 'required'
         ];
     }

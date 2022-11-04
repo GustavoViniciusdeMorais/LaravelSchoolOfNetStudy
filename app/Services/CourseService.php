@@ -28,4 +28,14 @@ class CourseService
     {
         return $this->courseRepository->getCourseByUid($identify);
     }
+
+    public function deleteCourseByIdentify($identify)
+    {
+        return $this->courseRepository->deleteCourseByIdentify($identify);
+    }
+
+    public function updateCourseByUid($identify, $data)
+    {
+        return $this->courseRepository->updateCourseByUid($identify, $data);
+    }
 }
