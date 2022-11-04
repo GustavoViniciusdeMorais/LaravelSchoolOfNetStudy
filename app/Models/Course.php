@@ -11,4 +11,9 @@ class Course extends Model
     
     protected $table = 'courses';
     protected $fillable = [ 'uuid', 'name', 'description' ];
+
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
 }

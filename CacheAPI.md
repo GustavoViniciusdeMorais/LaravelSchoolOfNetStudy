@@ -14,7 +14,7 @@ php artisan db:seed --class=CourseSeeder
 
 ```
 
-### /Users/gustavovinicius/Documents/LaravelSchoolOfNetStudy/app/Http/Controllers/API/CourseController.php
+### ./app/Http/Controllers/API/CourseController.php
 ```php
 
 class CourseController extends Controller
@@ -42,7 +42,40 @@ class CourseController extends Controller
 
 ```
 
-### /Users/gustavovinicius/Documents/LaravelSchoolOfNetStudy/app/Services/CourseService.php
+### ./app/Http/Requests/CoursesRequest.php
+```php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class CoursesRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+
+        $uuid = $this->course ?? '';
+
+        return [
+            'name' => ['required', "unique:courses,name,{$uuid},uuid"],
+            'description' => 'required'
+        ];
+    }
+}
+
+```
+
+### ./app/Services/CourseService.php
 ```php
 
 class CourseService
@@ -62,7 +95,7 @@ class CourseService
 
 ```
 
-### /Users/gustavovinicius/Documents/LaravelSchoolOfNetStudy/app/Repositories/CourseRepository.php
+### ./app/Repositories/CourseRepository.php
 ```php
 
 class CourseRepository
@@ -84,8 +117,13 @@ class CourseRepository
 
 ```
 
-### /Users/gustavovinicius/Documents/LaravelSchoolOfNetStudy/app/Http/Resources/CourseResource.php
+### ./app/Http/Resources/CourseResource.php
 ```php
+
+namespace App\Http\Resources;
+
+use Carbon\Carbon;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class CourseResource extends JsonResource
 {
@@ -95,7 +133,8 @@ class CourseResource extends JsonResource
             'uuid' => $this->uuid,
             'name' => $this->name,
             'description' => $this->description,
-            'created_at' => Carbon::make($this->created_at)->format('d/m/Y')
+            'created_at' => Carbon::make($this->created_at)->format('d/m/Y'),
+            'modules' => ModuleResource::collection($this->whenLoaded('modules'))
         ];
     }
 }

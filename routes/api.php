@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\ModuleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::get('/check', function () {
         ]
     ]);
 });
+
+Route::apiResource('/modules', ModuleController::class);
 
 Route::delete('/courses/{identify}', [CourseController::class, 'destroy']);
 Route::put('/courses/{course}', [CourseController::class, 'update']);

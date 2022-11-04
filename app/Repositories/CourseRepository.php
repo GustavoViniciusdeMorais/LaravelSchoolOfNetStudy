@@ -17,7 +17,7 @@ class CourseRepository
 
     public function getAllCourses()
     {
-        return $this->entity->orderBy('created_at', 'desc')->get();
+        return $this->entity->with(['modules'])->orderBy('created_at', 'desc')->get();
     }
 
     public function createCourse($data)
@@ -28,7 +28,7 @@ class CourseRepository
 
     public function getCourseByUid($identify)
     {
-        return $this->entity->where('uuid', $identify)->firstOrFail();
+        return $this->entity->with(['modules'])->where('uuid', $identify)->firstOrFail();
     }
 
     public function deleteCourseByIdentify($identify)
