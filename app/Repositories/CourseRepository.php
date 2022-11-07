@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Course;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class CourseRepository
@@ -17,7 +18,10 @@ class CourseRepository
 
     public function getAllCourses()
     {
-        return $this->entity->with(['modules'])->orderBy('created_at', 'desc')->get();
+        return Cache::remember('courses', 60, function () {
+            return $this->entity->with(['modules'])
+                ->orderBy('created_at', 'desc')->get();
+        });
     }
 
     public function createCourse($data)
