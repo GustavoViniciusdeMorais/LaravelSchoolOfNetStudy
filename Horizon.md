@@ -27,18 +27,6 @@ RUN apk add openrc
 
 ```
 
-### .env
-
-```
-
-QUEUE_CONNECTION=redis
-
-REDIS_HOST=10.0.0.9
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-
-```
-
 ### Install Horizon
 
 ```
