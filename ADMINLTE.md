@@ -1,3 +1,12 @@
+# Admin LTE config
+
+```
+composer require jeroennoten/laravel-adminlte:^3
+php artisan adminlte:install
+```
+
+### ./resources/views/welcome.blade.php
+```php
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
@@ -17,3 +26,4 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop
+```
