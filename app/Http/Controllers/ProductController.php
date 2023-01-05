@@ -6,10 +6,17 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\Product as ProductResource;
 use App\Http\Resources\ProductsCollection;
-use App\Models\Product;
+use App\Repositories\EloquentRepositories\ProductEloquentRepository;
 
 class ProductController extends Controller
 {
+    private $repository;
+
+    public function __construct(ProductEloquentRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return new ProductsCollection(Product::withTrashed()->get());
+        return new ProductsCollection($this->repository->getAll());
     }
 
     /**

@@ -26,6 +26,7 @@ Route::post('/customers', [CustomerController::class, 'store']);
 Route::get('/orders', [OrderController::class, 'index']);
 Route::post('/orders', [OrderController::class, 'store']);
 
+Route::get('/products', [ProductController::class, 'index']);
 Route::delete('/products/{id}', [ProductController::class, 'destroy']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 

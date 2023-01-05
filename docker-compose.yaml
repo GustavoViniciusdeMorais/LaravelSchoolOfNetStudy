@@ -9,7 +9,7 @@ services:
             - 80:80
         volumes:
             - ./:/var/www/html
-        container_name: nginx
+        container_name: rp_nginx
         depends_on:
             - php
             - mysql
@@ -22,14 +22,14 @@ services:
             dockerfile: php.dockerfile
         volumes:
             - ./:/var/www/html
-        container_name: php
+        container_name: rp_php
         networks:
             - app-network
 
     mysql:
         image: mysql:5.7
         restart: always
-        container_name: mysql
+        container_name: rp_mysql
         ports:
             - 3306:3306
         environment:
@@ -43,7 +43,7 @@ services:
     
     redis:
         image: redis
-        container_name: redis
+        container_name: rp_redis
         ports:
             - 6379:6379
         networks:
