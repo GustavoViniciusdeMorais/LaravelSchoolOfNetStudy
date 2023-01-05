@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Exceptions\MyExceptions;
 use Exception;
 
 class BaseEloquentRepository implements RepositoryInterface
@@ -31,7 +32,7 @@ class BaseEloquentRepository implements RepositoryInterface
     public function resolveEntity(): Model
     {
         if (!method_exists($this, 'entity')) {
-            throw new Exception('Implement the entity method, please!');
+            throw new MyExceptions('Implement the entity method, please!');
         }
         
         return app($this->entity());
