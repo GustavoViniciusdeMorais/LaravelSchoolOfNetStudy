@@ -5,6 +5,7 @@ services:
         build:
             context: .
             dockerfile: nginx.dockerfile
+        container_name: laravelnginx
         ports:
             - 80:80
         volumes:
@@ -12,29 +13,46 @@ services:
         depends_on:
             - php
             - mysql
+            - mailhog_yii
         networks:
-            - app-network
+            - rest-api-app-network
 
     php:
         build:
             context: .
             dockerfile: php.dockerfile
+        container_name: laravelphp
         volumes:
             - ./:/var/www/html
         networks:
-            - app-network
+            - rest-api-app-network
 
     mysql:
           image: mysql:5.7
           restart: always
+          container_name: laravelmysql
           ports:
               - 3306:3306
           environment:
               MYSQL_DATABASE: laravel
               MYSQL_ROOT_PASSWORD: laravel
           networks:
-            - app-network
+            - rest-api-app-network
+
+    mailhog_yii:
+        image: mailhog/mailhog
+        container_name: mailhog_yii
+        ports:
+          - 1025:1025
+          - 8025:8025
+        networks:
+            rest-api-app-network:
+                ipv4_address: 10.0.0.10
 
 networks:
-    app-network:
+    rest-api-app-network:
         driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: "10.0.0.0/16"

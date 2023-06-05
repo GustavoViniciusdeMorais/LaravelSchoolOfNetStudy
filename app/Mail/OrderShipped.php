@@ -7,20 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ProductStock extends Mailable
+class OrderShipped extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $product;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($product)
+    public function __construct()
     {
-        $this->product = $product;
+        //
     }
 
     /**
@@ -30,9 +28,9 @@ class ProductStock extends Mailable
      */
     public function build()
     {
-        return $this
-                ->subject('Atualização de stock de produto')
-                ->from(env('MAIL_FROM_ADDRESS'))
-                ->markdown('emails.products.stock');
+        $product = new \StdClass();
+        $product->title = 'asdfasdf';
+        $product->stock = 'asdfasdf';
+        return $this->markdown('emails.products.stock', ['product' => $product]);
     }
 }
