@@ -4,6 +4,18 @@
 php artisan make:mail OrderShipped
 ```
 
+### .env
+```
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog_yii
+MAIL_PORT=1025
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=gustavosystems@email.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
 ### Docker Compose
 ```yaml
 mailhog_yii:
